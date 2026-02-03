@@ -1,0 +1,433 @@
+:root {
+    --bg-dark: #050505;
+    --accent: #ff3e3e;
+    --accent-glow: rgba(255, 62, 62, 0.4);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-main: #e0e0e0;
+    --text-muted: #888;
+    --sidebar-w: 280px;
+    --outfit: 'Outfit', sans-serif;
+    --jakarta: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--jakarta);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Aurora Mesh Background */
+.mesh-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background:
+        radial-gradient(at 0% 0%, rgba(255, 62, 62, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(62, 127, 255, 0.1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(255, 62, 62, 0.05) 0px, transparent 50%);
+    filter: blur(80px);
+}
+
+.cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    transition: width 0.3s, height 0.3s;
+}
+
+/* Registration Glass Container */
+.registration-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    display: flex;
+    min-height: 750px;
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
+/* Sidebar */
+.registration-sidebar {
+    width: var(--sidebar-w);
+    background: rgba(0, 0, 0, 0.2);
+    border-right: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.btn-accent {
+    background: var(--accent);
+    color: white;
+    border: none;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(255, 62, 62, 0.2);
+}
+
+.btn-accent:hover {
+    background: #ff5e5e;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(255, 62, 62, 0.3);
+}
+
+/* Steps Navigation */
+.steps-nav {
+    padding: 0 1.5rem;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 15px;
+    transition: 0.3s;
+    opacity: 0.4;
+    cursor: default;
+}
+
+.step-item.active {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.step-item.completed {
+    opacity: 0.8;
+}
+
+.step-item.completed .step-icon {
+    background: var(--accent);
+    color: white;
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.step-item.active .step-icon {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 15px rgba(255, 62, 62, 0.2);
+}
+
+.step-text h6 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.step-text p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Content Area */
+.registration-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 650px;
+}
+
+/* Multi-step Logic */
+.step-pane {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.step-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom Form Fields */
+.form-floating-custom {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.form-field {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 1.5rem 1rem 0.5rem;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-field:focus {
+    border-color: var(--accent);
+    background: rgba(255, 62, 62, 0.02);
+    box-shadow: 0 0 20px rgba(255, 62, 62, 0.1);
+}
+
+.form-floating-custom label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.form-field:focus+label,
+.form-field:not(:placeholder-shown)+label,
+.form-field[type="date"]+label {
+    top: 15px;
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Trade Grid */
+.trade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.trade-card {
+    cursor: pointer;
+}
+
+.trade-card input {
+    display: none;
+}
+
+.trade-card-content {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: 0.3s;
+    height: 100%;
+}
+
+.trade-card-content i {
+    font-size: 2rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.trade-card input:checked+.trade-card-content {
+    border-color: var(--accent);
+    background: rgba(255, 62, 62, 0.05);
+}
+
+.trade-card input:checked+.trade-card-content i {
+    color: var(--accent);
+}
+
+.trade-card input:checked+.trade-card-content span {
+    color: white;
+}
+
+.trade-card-content span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* Upload Area */
+.upload-box {
+    width: 100%;
+    border: 2px dashed var(--glass-border);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-box:hover {
+    border-color: var(--accent);
+    background: rgba(255, 62, 62, 0.02);
+}
+
+.upload-box i {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    transition: 0.3s;
+}
+
+.upload-box.small-box {
+    padding: 2rem;
+}
+
+.upload-box.small-box i {
+    font-size: 1.5rem;
+}
+
+.upload-success {
+    border-color: #28a745 !important;
+    background: rgba(40, 167, 69, 0.05) !important;
+}
+
+.upload-success i {
+    color: #28a745 !important;
+    transform: scale(1.1);
+}
+
+.upload-success span {
+    color: white !important;
+    font-weight: 600;
+}
+
+.hidden-input {
+    display: none;
+}
+
+/* Invalid State */
+.form-field.is-invalid {
+    border-color: #dc3545 !important;
+    background: rgba(220, 53, 69, 0.05) !important;
+}
+
+.form-field.is-invalid+label {
+    color: #dc3545 !important;
+}
+
+/* Review Summary */
+.review-summary {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    padding: 1.5rem;
+}
+
+.summary-group {
+    margin-bottom: 2rem;
+}
+
+.summary-group h5 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.summary-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.summary-value {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Success Modal */
+.glass-modal {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    color: white;
+}
+
+.success-icon i {
+    font-size: 5rem;
+    filter: drop-shadow(0 0 15px rgba(25, 135, 84, 0.3));
+}
+
+/* Footer Nav */
+.registration-footer {
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .registration-glass {
+        flex-direction: column;
+    }
+
+    .registration-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    .steps-nav {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+    }
+
+    .step-item {
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+
+    .step-text {
+        display: none;
+    }
+}

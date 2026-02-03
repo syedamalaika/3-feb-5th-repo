@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTTI RYK | Student Login</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .login-card {
+            max-width: 450px;
+            width: 100%;
+            margin: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .login-footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 62, 62, 0.3);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--text-muted);
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .divider:not(:empty)::before {
+            margin-right: 1rem;
+        }
+
+        .divider:not(:empty)::after {
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+
+<body class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+
+    <!-- Mesh Background -->
+    <div class="mesh-bg"></div>
+    <div class="cursor-glow"></div>
+
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="login-card">
+            <div class="registration-glass p-4 p-md-5 d-block">
+                <div class="login-header">
+                    <h2 class="fw-bold mb-1">GTTI <span class="text-accent">RYK</span></h2>
+                    <p class="text-secondary">Student Portal Login</p>
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-floating-custom mb-4">
+                        <input type="text" class="form-field" id="loginId" placeholder="Application ID or Email"
+                            required>
+                        <label>Application ID or Email</label>
+                    </div>
+
+                    <div class="form-floating-custom mb-3">
+                        <input type="password" class="form-field" id="loginPass" placeholder="Password" required>
+                        <label>Password</label>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label small text-secondary" for="rememberMe">
+                                Remember me
+                            </label>
+                        </div>
+                        <a href="#" class="small text-accent fw-600 text-decoration-none">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-accent w-100 py-3 rounded-pill fw-bold">
+                        LOG IN <i class="fas fa-sign-in-alt ms-2"></i>
+                    </button>
+                </form>
+
+                <div class="divider">OR LOGIN WITH</div>
+
+                <div class="social-login">
+                    <a href="#" class="social-btn"><i class="fab fa-google"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-microsoft"></i></a>
+                </div>
+
+                <div class="login-footer">
+                    Don't have an application account? <br>
+                    <a href="index.html">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                alert('Success! Redirecting to dashboard...');
+                window.location.href = '#'; // Would redirect to dashboard
+                btn.innerHTML = 'LOG IN <i class="fas fa-sign-in-alt ms-2"></i>';
+                btn.disabled = false;
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

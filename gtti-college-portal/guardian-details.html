@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTTI RYK | Guardian Details</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Mesh Background -->
+    <div class="mesh-bg"></div>
+    <div class="cursor-glow"></div>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
+                <div class="registration-glass shadow-lg">
+                    <!-- Progress Sidebar -->
+                    <div class="registration-sidebar">
+                        <div class="brand-header p-4">
+                            <h2 class="fw-bold mb-0">GTTI <span class="text-accent">RYK</span></h2>
+                            <p class="small text-secondary mb-0">Technical Training Excellence</p>
+                        </div>
+
+                        <div class="steps-nav mt-4">
+                            <div class="step-item" data-step="1">
+                                <div class="step-icon"><i class="fas fa-user"></i></div>
+                                <div class="step-text">
+                                    <h6>Personal Info</h6>
+                                    <p>Your basic details</p>
+                                </div>
+                            </div>
+                            <div class="step-item" data-step="2">
+                                <div class="step-icon"><i class="fas fa-shield-halved"></i></div>
+                                <div class="step-text">
+                                    <h6>Guardian Details</h6>
+                                    <p>Family information</p>
+                                </div>
+                            </div>
+                            <div class="step-item" data-step="3">
+                                <div class="step-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <div class="step-text">
+                                    <h6>Academic Record</h6>
+                                    <p>Educational history</p>
+                                </div>
+                            </div>
+                            <div class="step-item" data-step="4">
+                                <div class="step-icon"><i class="fas fa-microchip"></i></div>
+                                <div class="step-text">
+                                    <h6>Trade Selection</h6>
+                                    <p>Choose your course</p>
+                                </div>
+                            </div>
+                            <div class="step-item" data-step="5">
+                                <div class="step-icon"><i class="fas fa-file-upload"></i></div>
+                                <div class="step-text">
+                                    <h6>Documents</h6>
+                                    <p>Identity & Marks</p>
+                                </div>
+                            </div>
+                            <div class="step-item" data-step="6">
+                                <div class="step-icon"><i class="fas fa-circle-check"></i></div>
+                                <div class="step-text">
+                                    <h6>Review</h6>
+                                    <p>Final submission</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-footer p-4 mt-auto">
+                            <p class="small mb-0 text-secondary">Need help? <a href="#" class="text-accent">Support</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Main Form Section -->
+                    <div class="registration-content">
+                        <div class="form-scroll-area p-4 p-md-5">
+                            <form id="multiStepForm">
+                                <div class="pane-header mb-4">
+                                    <h3 class="fw-bold mb-1">Father / Guardian Details</h3>
+                                    <p class="text-secondary">Information about your legal guardian or father.</p>
+                                </div>
+                                <div class="row g-4">
+                                    <div class="col-md-12">
+                                        <div class="form-floating-custom">
+                                            <input type="text" class="form-field" name="fatherName"
+                                                placeholder="Father's Name" required>
+                                            <label>Father's Full Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating-custom">
+                                            <input type="text" class="form-field" name="fatherCnic" id="fatherCnicField"
+                                                placeholder="xxxxx-xxxxxxx-x" pattern="\d{5}-\d{7}-\d{1}"
+                                                title="Format: 12345-1234567-1" required>
+                                            <label>Father's CNIC</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating-custom">
+                                            <input type="text" class="form-field" name="fatherOccupation"
+                                                placeholder="Occupation" required>
+                                            <label>Father's Occupation</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-floating-custom">
+                                            <input type="tel" class="form-field" name="fatherPhone"
+                                                id="fatherPhoneField" placeholder="03xx-xxxxxxx" pattern="03\d{2}-\d{7}"
+                                                title="Format: 0300-1234567" required>
+                                            <label>Emergency Contact Number</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Sticky Footer Navigation -->
+                        <div class="registration-footer px-4 px-md-5 py-4 border-top">
+                            <button type="button" class="btn btn-outline-secondary px-4 py-2 rounded-pill" id="prevBtn">
+                                <i class="fas fa-arrow-left me-2"></i> Previous
+                            </button>
+                            <button type="button" class="btn btn-accent px-5 py-2 rounded-pill ms-auto" id="nextBtn">
+                                Next <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
